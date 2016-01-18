@@ -6,7 +6,7 @@ Effort to write a ServiceWorker demo app that properly manages updates, defined 
 Usage
 ---
 
-Check out the code, then run
+Check out the code, `npm install`, then run
 
     npm run dev
 
