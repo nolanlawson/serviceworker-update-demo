@@ -1,5 +1,5 @@
 document.getElementById('display').innerHTML =
-  'Hello, my version is: ' + require('../package.json').version;
+  'Hello, my version is: ' + require('./package.json').version;
 
 var localForage = require('localforage');
 var semver = require('semver');
@@ -47,9 +47,10 @@ function onUpdateFound(registration) {
 }
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js', {
+  navigator.serviceWorker.register('/sw-bundle.js', {
     scope: './'
   }).then(registration => {
+    console.log('sw registration:', registration);
     registration.addEventListener('updatefound', () => onUpdateFound(registration));
   });
 }

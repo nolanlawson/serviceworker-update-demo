@@ -1,4 +1,4 @@
-build/index.js
-build/sw.js
+bundle.js
+sw-bundle.js
 npm-debug.log
 node_modules

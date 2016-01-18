@@ -5,7 +5,7 @@ var semver = require('semver');
 var localForage = require('localforage');
 
 // 'package-json-versionify' strips out most of package.json
-var pkg = require('../package.json');
+var pkg = require('./package.json');
 
 // Using Jake Archibald's service worker "semver" style here
 // Pattern here is "a.b.c"
@@ -66,6 +66,10 @@ self.addEventListener('activate', function (event) {
 
     await localForage.setItem('active-version', version);
   })());
+});
+
+self.addEventListener('redundant', function (event) {
+  console.log('redundant v' + version, event);
 });
 
 self.addEventListener('fetch', function (event) {
