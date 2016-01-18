@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "browserify --debug index.js -o bundle.js & browserify --debug sw.js -o sw-bundle.js",
-    "dev": "watchify --debug index.js -o bundle.js & watchify --debug sw.js -o sw-bundle.js & hs -o -p 9000"
+    "dev": "watchify --debug index.js -o bundle.js & watchify --debug sw.js -o sw-bundle.js & hs -c0 -o -p 9000"
   },
   "author": "Nolan Lawson <nolan@nolanlawson.com>",
   "license": "Apache-2.0",
