@@ -1,0 +1,30 @@
+{
+  "name": "serviceworker-update-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build-main": "browserify --debug --full-paths src/index.js > build/index.js",
+    "build-sw": "browserify --debug --full-paths src/sw.js > build/sw.js",
+    "build": "npm run build-main && npm run build-sw"
+  },
+  "author": "Nolan Lawson <nolan@nolanlawson.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "babel-plugin-syntax-async-functions": "^6.3.13",
+    "babel-plugin-transform-regenerator": "^6.4.4",
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "localforage": "^1.3.1",
+    "package-json-versionify": "^1.0.1",
+    "regenerator": "^0.8.42",
+    "semver": "^5.1.0",
+    "serviceworker-cache-polyfill": "^3.0.0"
+  },
+  "browserify": {
+    "transform": [
+      "babelify",
+      "package-json-versionify"
+    ]
+  }
+}

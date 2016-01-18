@@ -1,0 +1,4 @@
+build/index.js
+build/sw.js
+npm-debug.log
+node_modules
