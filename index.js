@@ -3,6 +3,7 @@ document.getElementById('display').innerHTML =
 
 var localForage = require('localforage');
 var semver = require('semver');
+var currentVersion = require('./package.json').version;
 
 function onFirstLoad() {
   console.log('sw activated (first load)');
@@ -16,14 +17,15 @@ function onInstalled() {
   console.log('sw installed');
 
   localForage.getItem('active-version').then(activeVersion => {
-    console.log('active-version', activeVersion);
+    console.log('main thread: activeVersion:', activeVersion,
+      'my version:', currentVersion);
     // activeVersion is undefined for sw-null
     // if the main version has changed, bail
     if (activeVersion &&
-      semver.parse(activeVersion).major !== semver.parse(self.version).major) {
-      return;
+      semver.parse(activeVersion).major !== semver.parse(currentVersion).major) {
+      document.getElementById('update').innerHTML =
+        'You have an update available! You should reload';
     }
-    console.log('activeVersion', activeVersion);
   }).catch(console.log.bind(console));
 }
 
