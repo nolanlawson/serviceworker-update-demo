@@ -30,6 +30,7 @@ function onInstalled() {
 }
 
 function onStateChange(newWorker) {
+  console.log('onstatechange:', newWorker);
   if (newWorker.state == 'activated') {
     onFirstLoad();
     if (navigator.serviceWorker.controller) {
@@ -53,6 +54,10 @@ if ('serviceWorker' in navigator) {
     scope: './'
   }).then(registration => {
     console.log('sw registration:', registration);
+
     registration.addEventListener('updatefound', () => onUpdateFound(registration));
+    if (typeof registration.update == 'function') {
+      registration.update();
+    }
   });
 }
